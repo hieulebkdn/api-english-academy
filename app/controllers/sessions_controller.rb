@@ -2,7 +2,7 @@ class SessionsController < ApplicationController
   def create
     @user = User.find_by(email: params[:login_email])
     # session[:user_id] = @user.id
-
+    @user.remember
     if @user.authenticate params[:login_password]
       @response_data = User.select(:id, :email, :phone, :remember_digest, :role).where(id: @user.id)
       render json: @response_data
