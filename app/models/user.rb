@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :invoices
+  has_many :invoices, dependent: :destroy
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-.]+\.[a-z]+\z/i
   attr_accessor :remember_token
 
