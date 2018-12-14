@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
     @user.remember
     if @user.authenticate params[:login_password]
       @response_data = User.select(:id, :email, :phone, :remember_digest, :role).where(id: @user.id)
-      render json: @response_data
+      render json: @user
     else
       render json: @user.errors, status: :unprocessable_entity
     end
